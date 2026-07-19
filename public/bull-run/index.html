@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#02030a" />
+    <title>BULL//RUN — Neon Stampede</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="game"></div>
+    <div class="vignette"></div>
+    <div id="hud" aria-live="polite">
+      <div class="brand"><span class="brand-mark">▲</span>BULL<span>//</span>RUN</div>
+      <div class="topbar">
+        <div class="readout"><small>DISTANCE</small><b id="score">000000</b><em>m</em></div>
+        <div class="readout"><small>CORE ENERGY</small><div class="energy"><i id="energyFill"></i></div></div>
+        <div class="readout"><small>BEST</small><b id="best">000000</b><em>m</em></div>
+      </div>
+      <div class="speed"><span>VELOCITY</span><b id="speed">1.0x</b></div>
+      <div id="dashHint">HOLD <kbd>SPACE</kbd> TO CHARGE</div>
+    </div>
+    <section id="startScreen" class="screen">
+      <div class="eyebrow">THE NEON STAMPEDE / SECTOR 07</div>
+      <h1>BULL<span>//</span>RUN</h1>
+      <p>Outrun the collapse. Smash the barriers. Own the night.</p>
+      <button id="startButton">ENTER THE RUN <span>↗</span></button>
+      <div class="instructions"><div><kbd>←</kbd><kbd>→</kbd><span>MOVE</span></div><div><kbd>↑</kbd><span>JUMP</span></div><div><kbd>SPACE</kbd><span>CHARGE</span></div></div>
+    </section>
+    <section id="gameOver" class="screen hidden">
+      <div class="eyebrow red">RUN TERMINATED</div>
+      <h2>YOU RAN <b id="finalScore">0</b> METERS</h2>
+      <p id="resultLine">The city is still ahead.</p>
+      <button id="restartButton">RUN IT BACK <span>↻</span></button>
+    </section>
+    <div id="touchControls"><button data-action="left">◀</button><button data-action="jump">▲</button><button data-action="right">▶</button><button data-action="dash">ϟ</button></div>
+    <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js"}}</script>
+    <script type="module" src="game.js"></script>
+  </body>
+</html>
