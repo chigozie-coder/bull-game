@@ -1,43 +1,63 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#02030a" />
-    <title>BULL//RUN — Neon Stampede</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div id="game"></div>
-    <div class="vignette"></div>
-    <div id="hud" aria-live="polite">
-      <div class="brand"><span class="brand-mark">▲</span>BULL<span>//</span>RUN</div>
-      <div class="topbar">
-        <div class="readout"><small>DISTANCE</small><b id="score">000000</b><em>m</em></div>
-        <div class="readout"><small>CORE ENERGY</small><div class="energy"><i id="energyFill"></i></div></div>
-        <div class="readout"><small>BEST</small><b id="best">000000</b><em>m</em></div>
-      </div>
-      <div class="speed"><span>VELOCITY</span><b id="speed">1.0x</b></div>
-      <div id="dashHint">HOLD <kbd>SPACE</kbd> TO CHARGE</div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no" />
+  <meta name="theme-color" content="#0b0d0b" />
+  <title>BULL RUN — Wild Charge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="game"></div>
+  <div class="film"></div>
+  <div id="flash"></div>
+
+  <header id="hud" class="hidden">
+    <div class="brand"><i></i><strong>BULL</strong><span>RUN</span></div>
+    <div class="hud-center">
+      <div><small>DISTANCE</small><b id="score">0000</b><em>M</em></div>
+      <div><small>HIGH SCORE</small><b id="best">0000</b><em>M</em></div>
     </div>
-    <section id="startScreen" class="screen">
-      <div class="eyebrow">THE NEON STAMPEDE / SECTOR 07</div>
-      <h1>BULL<span>//</span>RUN</h1>
-      <p>Outrun the collapse. Smash the barriers. Own the night.</p>
-      <button id="startButton">ENTER THE RUN <span>↗</span></button>
-      <div class="instructions"><div><kbd>←</kbd><kbd>→</kbd><span>MOVE</span></div><div><kbd>↑</kbd><span>JUMP</span></div><div><kbd>SPACE</kbd><span>CHARGE</span></div></div>
-    </section>
-    <section id="gameOver" class="screen hidden">
-      <div class="eyebrow red">RUN TERMINATED</div>
-      <h2>YOU RAN <b id="finalScore">0</b> METERS</h2>
-      <p id="resultLine">The city is still ahead.</p>
-      <button id="restartButton">RUN IT BACK <span>↻</span></button>
-    </section>
-    <div id="touchControls"><button data-action="left">◀</button><button data-action="jump">▲</button><button data-action="right">▶</button><button data-action="dash">ϟ</button></div>
-    <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js"}}</script>
-    <script type="module" src="game.js"></script>
-  </body>
+    <div class="charge-wrap"><span>CHARGE</span><div class="charge-track"><i id="energyFill"></i></div></div>
+  </header>
+
+  <section id="loading" class="overlay">
+    <div class="loading-mark"><i></i><i></i></div>
+    <p>SUMMONING THE BULL</p>
+    <div class="load-track"><i id="loadFill"></i></div>
+  </section>
+
+  <section id="startScreen" class="overlay hidden">
+    <div class="overline">THE WILD DOESN'T WAIT</div>
+    <h1>BULL<br><span>RUN</span></h1>
+    <p>Charge through the old country. Break what stands in your way.</p>
+    <button id="startButton"><span>START RUN</span><b>→</b></button>
+    <div class="keys">
+      <span><kbd>←</kbd><kbd>→</kbd> STEER</span>
+      <span><kbd>↑</kbd> JUMP</span>
+      <span><kbd>SPACE</kbd> CHARGE</span>
+    </div>
+    <small class="credit">Bull model by Pixel · CC BY 3.0</small>
+  </section>
+
+  <section id="gameOver" class="overlay hidden">
+    <div class="overline danger">THE RUN ENDS HERE</div>
+    <h2><span id="finalScore">0</span><small>METERS</small></h2>
+    <p id="resultLine">The trail remembers every hoofbeat.</p>
+    <button id="restartButton"><span>RUN AGAIN</span><b>↻</b></button>
+  </section>
+
+  <div id="touchControls" class="hidden">
+    <button data-action="left" aria-label="Move left">‹</button>
+    <button data-action="jump" aria-label="Jump">↑</button>
+    <button data-action="right" aria-label="Move right">›</button>
+    <button data-action="dash" class="dash" aria-label="Charge">ϟ</button>
+  </div>
+
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/"}}</script>
+  <script type="module" src="game.js"></script>
+</body>
 </html>
